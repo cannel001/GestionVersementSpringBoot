@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragment/head::head"> </head>
+
+    <body>
+        <!-- Sidenav -->
+        <nav th:replace="fragment/slidebar::slidebar">  </nav>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav th:replace="fragment/navbar::navbar">  </nav>
+            <!-- Header -->
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(../../assets/img/brand/Lancement-Objis-Côte-dIvoire-Alassaut.com-1-Objis.jpg); background-size: cover; background-position: center top;">
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <div class="container-fluid">
+                    <div class="header-body">
+                        <!-- Card stats -->
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="card-title text-uppercase text-muted mb-0">Promo</h6>
+                                                <span class="h2 font-weight-bold mb-0"><span th:text="${totalPromo}"></span> </span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                                    <i class="fas fa-chart-pie"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="card-title text-uppercase text-muted mb-0">Beneficiares</h6>
+                                                <span class="h2 font-weight-bold mb-0"><span th:text="${totalBenef}"></span></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                                    <i class="fas fa-users"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="card-title text-uppercase text-muted mb-0">Caisse</h6>
+                                                <span th:text="${totalCaisse}" class="h2 font-weight-bold mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                                    <i class="fas fa-money-bill"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="card-title text-uppercase text-muted mb-0">Versements du mois</h6>
+                                                <span th:text="${totalMontantMois}" class="h2 font-weight-bold mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                    <i class="fas fa-dollar-sign"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+
+                <div class="row mt-5">
+                    <div class="col-xl-8 mb-5 mb-xl-0">
+                        <div class="card shadow">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="mb-0">Beneficiaires en retards</h4>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a href="#!" class="btn btn-sm btn-danger">Les alerter</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prenom(s)</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Promo</th>
+                                            <th scope="col">Montant</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <th scope="row">
+                                                kakou
+                                            </th>
+                                            <td>
+                                                seraphin
+                                            </td>
+                                            <td>
+                                                test@gmail.com
+                                            </td>
+                                            <td>
+                                                promo1 </td>
+                                            <td>
+                                                <i class="fas fa-arrow-down text-warning mr-3"></i> 60000
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                kakou
+                                            </th>
+                                            <td>
+                                                seraphin
+                                            </td>
+                                            <td>
+                                                test@gmail.com
+                                            </td>
+                                            <td>
+                                                promo1 </td>
+                                            <td>
+                                                <i class="fas fa-arrow-down text-warning mr-3"></i> 60000
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                kakou
+                                            </th>
+                                            <td>
+                                                seraphin
+                                            </td>
+                                            <td>
+                                                test@gmail.com
+                                            </td>
+                                            <td>
+                                                promo1 </td>
+                                            <td>
+                                                <i class="fas fa-arrow-down text-warning mr-3"></i> 60000
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card shadow">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="mb-0">Les derniers versements</h4>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a th:href="@{/versement/afficherlister}" class="btn btn-sm btn-primary">Voir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Montant</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="versement: ${derniersVers}">
+                                            <td th:text="${versement.dateVersement}">Date</th>
+                                            <td th:text="${versement.montant}">Montant</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="mr-2">60%</span>
+                                                    <div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60"
+                                                                 aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer th:replace="fragment/footer::footer">  </footer>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+    <block th:replace="fragment/js::js"> </block>
+
+</body>
+
+</html>

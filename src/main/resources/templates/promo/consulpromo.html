@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragment/head_1::head">  </head>
+
+    <body>
+        <!-- Sidenav -->
+        <nav th:replace="fragment/slidebar_1::slidebar"> </nav>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav th:replace="fragment/navbar_1::navbar"> </nav>
+            <!-- Header -->
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../assets/img/brand/10000-Developpeurs-1.jpg); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-lg-11 col-md-11">
+                            <h1 class="display-5 text-white">Salut, <span th:text="${promo.libelle}"></span></h1>
+                            <p class="text-white mt-0 mb-5">Le code est une passion, nous sommes ravie de vous avoir avec notre equipe</p>
+                            <button class="btn btn-info" onclick="myFunction()">Editer promotion</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+                <div class="row">
+
+                    <div class="col-xl-12 order-xl-1">
+                        <div class="card bg-secondary shadow">
+                            <div class="card-header bg-white border-0">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0">Formulaire promotion</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form th:object="${promo}" th:action="@{/promo/ajouter}" method="POST">
+                                    <h6 class="heading-small text-muted mb-4">Information concernant la promotion</h6>
+                                    <input type="text" th:field="*{id}" style="display: none"/>
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-libelle">Libelle</label>
+                                                    <input th:field="*{libelle}" disabled="" type="text" id="input-libelle" class="form-control form-control-alternative" placeholder="Username"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-mensualite">Mensualité</label>
+                                                    <input th:field="*{mensualite}" disabled="" type="number" id="input-mensualite" class="form-control form-control-alternative" placeholder="mensualite"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-nbMois">Nombre de mois</label>
+                                                    <input th:field="*{nbMois}" disabled="" type="number" id="input-nbMois" class="form-control form-control-alternative" placeholder="Nombre de mois"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info text-center">Valider</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>  
+                    </div>
+
+                </div>
+                <!-- Footer -->
+                <footer th:replace="fragment/footer_1::footer">  </footer>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+    <block th:replace="fragment/js_1::js"> </block>
+
+</body>
+
+<script>
+    function myFunction(){
+        document.getElementById("input-libelle").disabled=false;
+        document.getElementById("input-mensualite").disabled=false;
+        document.getElementById("input-nbMois").disabled=false;
+    }    
+</script>
+
+</html>

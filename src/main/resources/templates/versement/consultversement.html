@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragment/head_1::head"> </head>
+
+    <body>
+        <!-- Sidenav -->
+        <nav th:replace="fragment/slidebar_1::slidebar"> </nav>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav th:replace="fragment/navbar_1::navbar"> </nav>
+            <!-- Header -->
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../assets/img/brand/10000-Developpeurs-1.jpg); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10">
+                            <h1 class="display-2 text-white">Salut,</h1>
+                            <p class="text-white mt-0 mb-5">Le code est une passion, nous sommes ravie de vous avoir avec notre equipe</p>
+                            <button onclick="myFunction()" class="btn btn-info">Editer versement</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+                <div class="row">
+
+                    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                        <div class="card card-profile shadow">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-3 order-lg-2">
+                                    <div class="card-profile-image">
+                                        <a href="#">
+                                            <img th:src="@{../../assets/img/brand/logocodeur.jpg}" class="rounded-circle">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                                <div class="d-flex justify-content-between">
+                                    <a href="#" class="btn btn-sm btn-danger mr-4">Alerter</a>
+                                    <a href="#" class="btn btn-sm btn-default float-right">Versements</a>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 pt-md-4">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                            <div>
+                                                <span th:text="${versement.beneficiaire.montantVerse}" class="heading-small"></span>
+                                                <span class="description">Versé</span>
+                                            </div>
+                                            <div>
+                                                <span th:text="${versement.beneficiaire.solde}" class="heading-small"></span>
+                                                <span class="description">Solde</span>
+                                            </div>
+                                            <div>
+                                                <span th:text="${versement.beneficiaire.montantRestant}" class="heading-small"></span>
+                                                <span class="description">reste</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <h3> <span th:text="${versement.beneficiaire.nom}"></span> <span th:text="${versement.beneficiaire.prenom}"></span></h3>
+                                    <div class="h5 font-weight-300">
+                                        <i class="ni location_pin mr-2"></i>Cote d'ivoire, Abidjan
+                                    </div>
+                                    <div class="h5 font-weight-300">
+                                        <i class="ni location_pin mr-2"></i><span th:text="${versement.beneficiaire.email}"></span>, <span th:text="${versement.beneficiaire.tel}"></span>
+                                    </div>
+                                    <div class="h5 mt-4">
+                                        <i class="ni business_briefcase-24 mr-2"></i><span th:text="${versement.beneficiaire.promo.libelle}"></span>
+                                    </div>
+                                    <div class="h5 mt-4">
+                                        <i class="ni business_briefcase-24 mr-2"></i><span th:text="${versement.beneficiaire.matricule}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8 order-xl-1">
+                        <div class="card bg-secondary shadow">
+                            <div class="card-header bg-white border-0">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0">Formulaire versement</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form th:object="${versement}" method="post" th:action="@{/versement/ajouter}">
+                                    <h6 class="heading-small text-muted mb-4">Information concernant le versement</h6>
+                                    <input type="text" th:field="*{id}" style="display: none"/>
+                                    <input type="text" th:field="*{beneficiaire.matricule}" style="display: none"/>
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-matricule">Matricule</label>
+                                                    <input disabled="" required="" type="text" id="input-matricule" th:field="*{beneficiaire.matricule}" class="form-control form-control-alternative"
+                                                           placeholder="Matricule">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-montant">Montant</label>
+                                                    <input disabled="" required="" type="number" id="input-montant" th:field="*{montant}" class="form-control form-control-alternative" placeholder="montant">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-date">Date versement</label>
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input disabled="" required="" id="input-dateversement" class="form-control datepicker" th:field="*{dateVersement}" placeholder="Selectionner la date" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-mois">Mois</label>
+                                                    <select disabled="" required="" id="input-mois" class="browser-default custom-select" th:field="*{mois}">
+                                                        <option th:value="JANVIER">JANVIER</option>
+                                                        <option th:value="FEVRIER">FEVRIER</option>
+                                                        <option th:value="MARS">MARS</option>
+                                                        <option th:value="AVRIL">AVRIL</option>
+                                                        <option th:value="MAI">MAI</option>
+                                                        <option th:value="JUIN">JUIN</option>
+                                                        <option th:value="JUILLET">JUILLET</option>
+                                                        <option th:value="AOUT">AOUT</option>
+                                                        <option th:value="SEPTEMBRE">SEPTEMBRE</option>
+                                                        <option th:value="OCTOBRE">OCTOBRE</option>
+                                                        <option th:value="NOVEMBRE">NOVEMBRE</option>
+                                                        <option th:value="DECEMBRE">DECEMBRE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-date">Année</label>
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input disabled="" required="" id="input-annee" class="form-control" th:field="*{annee}" placeholder="Veuillez entrer l'année" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info text-center">Valider</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Footer -->
+                <footer th:replace="fragment/footer_1::footer"> </footer>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+    <block th:replace="fragment/js_1::js"> </block>
+
+</body>
+
+<script>
+    function myFunction(){
+        document.getElementById("input-montant").disabled=false;
+        document.getElementById("input-dateversement").disabled=false;
+        document.getElementById("input-mois").disabled=false;
+        document.getElementById("input-annee").disabled=false;
+    }
+</script>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragment/head::head"> </head>
+
+    <body>
+        <!-- Sidenav -->
+        <nav th:replace="fragment/slidebar::slidebar">  </nav>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav th:replace="fragment/navbar::navbar"> </nav>
+            <!-- Header -->
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(../../assets/img/brand/mbiandou.jpg); background-size: cover; background-position: center top;">
+                <span class="mask bg-gradient-default opacity-8"></span>
+
+                <div class="container-fluid">
+                    <div class="header-body">
+                        <!-- Card stats -->
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card card-stats mb-4 mb-xl-0">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title text-uppercase text-muted mb-0">Total</h5>
+                                                <span th:text="${totalBenef}" class="h2 font-weight-bold mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                                    <i class="fas fa-chart-bar"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+
+                <div class="row mt-5">
+                    <div class="col-xl-9 mb-5 mb-xl-0">
+                        <div class="card shadow">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="mb-0">Liste des beneficiaires</h3>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a th:href="@{/benef/formajout}" class="btn btn-sm btn-info">Nouveau beneficiaire</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Prenom(s)</th>
+                                            <th scope="col">Telephone</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Promo</th>
+                                            <th scope="col">Voir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="beneficiaire :${beneficiaires}">
+                                            <td th:text="${beneficiaire.nom}">nom</td>
+                                            <td th:text="${beneficiaire.prenom}">prenom</td>
+                                            <td th:text="${beneficiaire.tel}">Telephone</td>
+                                            <td th:text="${beneficiaire.email}">email</td>
+                                            <td th:text="${beneficiaire.promo.libelle}">promo</td>
+                                            <td>
+                                                <a th:href="${'/benef/afficherformconsult/'+beneficiaire.codeB}" class="btn btn-sm btn-primary">Voir</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card shadow">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="mb-0">Beneficiaires par promo</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Promo</th>
+                                            <th scope="col">Beneficiaire</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                Promo 1
+                                            </th>
+                                            <td>
+                                                4
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer th:replace="fragment/footer::footer"> </footer>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+    <block th:replace="fragment/js::js"> </block>
+
+</body>
+
+</html>

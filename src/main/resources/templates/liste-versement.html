@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../template_spring_web/admin/assets/libs/flot/css/float-chart.css" rel="stylesheet"/>
+        <link href="../template_spring_web/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet"/>
+        <!-- Custom CSS -->
+        <link href="../template_spring_web/admin/dist/css/style.min.css" rel="stylesheet"/>
+        <link href="../template_spring_web/admin/assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
+        <link href="../template_spring_web/admin/assets/libs/jquery-steps/steps.css" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="../template_spring_web/admin/dist/MDB-Free_4.5.13/css/mdb.min.css" type="text/css" />
+        <!-- Your custom styles (optional) -->
+        <link href="../template_spring_web/admin/dist/MDB-Free_4.5.13/css/style.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    </head>
+    <body>
+
+        <div th:replace="header :: navbar">      </div>
+
+        <div class="row text-center">
+            <img width="100%" height="400px"   th:src="@{/img/jhipster.png}"/>
+        </div>
+        <h1 class="text-center" style="margin-top: 50px">LISTE DES VERSEMENTS</h1>
+        <br>
+
+        <div class="container" th:if="${not #lists.isEmpty(liste)}">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>MATRICULE</th>
+                    <th>NOM</th>
+                    <th>PRENOM</th>
+                    <th>MONTANT</th>
+                    <th>DATE VERSEMENT</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="versement : ${liste}">
+                    <td th:text="${versement.id}"></td>
+                    <td th:text="${versement.beneficiaire.matricule}"></td>
+                    <td th:text="${versement.beneficiaire.nom}">nom</td>
+                    <td th:text="${versement.beneficiaire.prenom}">prenom</td>
+                    <td th:text="${versement.montant}">montant</td>
+                    <td th:text="${versement.dateVersement}">date versement</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Action</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" th:href="${ '/versement/consulterversement/' + versement.id}">Voir</a>
+                                <a class="dropdown-item" th:href="${ '/versement/editerversement/' + versement.id}">Modifier</a>
+                            </div>
+                        </div>
+                        <!--                        <a th:href="${ '/benef/afficher/' + benef.codeB}">Voir</a></td>-->
+                        <!--                    <td><a th:href="${'/benef/editer/' + benef.codeB}">Modif.</a></td>-->
+                </tr>
+            </table>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../template_spring_web/admin/dist/MDB-Free_4.5.13/js/popper.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../template_spring_web/admin/dist/MDB-Free_4.5.13/js/mdb.min.js"></script>
+
+    </body>
+</html>

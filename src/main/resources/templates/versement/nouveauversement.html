@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragment/head::head"> </head>
+
+    <body>
+        <!-- Sidenav -->
+        <nav th:replace="fragment/slidebar::slidebar"> </nav>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav th:replace="fragment/navbar::navbar"> </nav>
+            <!-- Header -->
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-11">
+                            <h1 class="display-2 text-white">Salut,</h1>
+                            <p class="text-white mt-0">Si debugger, c’est supprimer des bugs, alors programmer ne peut être que les
+                                ajouter — Edsger Dijkstra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--7">
+                <div class="row">
+
+                    <div class="col-xl-12 order-xl-1">
+                        <div class="card bg-secondary shadow">
+                            <div class="card-header bg-white border-0">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0">Formulaire versement</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form th:object="${versement}" method="post" th:action="@{/versement/ajouter}">
+                                    <h6 class="heading-small text-muted mb-4">Information concernant le versement</h6>
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-matricule">Matricule</label>
+                                                    <input required="" type="text" id="input-matricule" th:field="*{beneficiaire.matricule}" class="form-control form-control-alternative"
+                                                           placeholder="Matricule">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-montant">Montant</label>
+                                                    <input required="" type="number" id="input-email" th:field="*{montant}" class="form-control form-control-alternative" placeholder="montant">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-date">Date versement</label>
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input required="" class="form-control datepicker" th:field="*{dateVersement}" placeholder="Selectionner la date" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-mois">Mois</label>
+                                                    <select required="" class="browser-default custom-select" th:field="*{mois}">
+                                                        <option th:value="JANVIER">JANVIER</option>
+                                                        <option th:value="FEVRIER">FEVRIER</option>
+                                                        <option th:value="MARS">MARS</option>
+                                                        <option th:value="AVRIL">AVRIL</option>
+                                                        <option th:value="MAI">MAI</option>
+                                                        <option th:value="JUIN">JUIN</option>
+                                                        <option th:value="JUILLET">JUILLET</option>
+                                                        <option th:value="AOUT">AOUT</option>
+                                                        <option th:value="SEPTEMBRE">SEPTEMBRE</option>
+                                                        <option th:value="OCTOBRE">OCTOBRE</option>
+                                                        <option th:value="NOVEMBRE">NOVEMBRE</option>
+                                                        <option th:value="DECEMBRE">DECEMBRE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="input-date">Année</label>
+                                                    <div class="input-group input-group-alternative">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                        </div>
+                                                        <input required="" class="form-control" th:field="*{annee}" placeholder="Veuillez entrer l'année" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info text-center">Valider</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Footer -->
+                <footer th:replace="fragment/footer::footer"> </footer>
+            </div>
+        </div>
+        <!-- Argon Scripts -->
+    <block th:replace="fragment/js::js"> </block>
+
+</body>
+
+</html>
